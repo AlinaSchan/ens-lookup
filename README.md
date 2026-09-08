@@ -3,6 +3,7 @@
 [![ci](https://github.com/alinaschanz/ens-lookup/actions/workflows/ci.yml/badge.svg)](https://github.com/alinaschanz/ens-lookup/actions/workflows/ci.yml)
 ![python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
 ![license mit](https://img.shields.io/badge/license-MIT-2b7a74)
+[![release](https://img.shields.io/github/v/release/alinaschanz/ens-lookup?color=2b7a74)](https://github.com/alinaschanz/ens-lookup/releases)
 
 ens names to addresses and back, plus the text records (twitter, github, url, ...).
 pure python, nothing to install, a public rpc, no keys. keccak-256 is implemented in

@@ -33,4 +33,14 @@ jobs:
       - run: python -m pytest -q tests/test_live.py
         env:
           ENSLOOKUP_LIVE: "1"
-      - run: enslookup vitalik.eth 0xd8dA6BF26964aF9D7eEd9e03E9151fE1fB1b9fF3 --all-text
+      - run: enslookup vitalik.eth 0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045 --all-text
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --quiet ruff
+      - run: ruff check .
