@@ -4,6 +4,7 @@
 ![python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
 ![license mit](https://img.shields.io/badge/license-MIT-2b7a74)
 [![release](https://img.shields.io/github/v/release/alinaschanz/ens-lookup?color=2b7a74)](https://github.com/alinaschanz/ens-lookup/releases)
+[![openssf scorecard](https://api.scorecard.dev/projects/github.com/alinaschanz/ens-lookup/badge)](https://scorecard.dev/viewer/?uri=github.com/alinaschanz/ens-lookup)
 
 ens names to addresses and back, plus the text records (twitter, github, url, ...).
 pure python, nothing to install, a public rpc, no keys. keccak-256 is implemented in
@@ -99,6 +100,20 @@ vectors, so a wrong bit anywhere in `keccak.py` fails loudly.
 - [bigmoves](https://github.com/alinaschanz/bigmoves): large transfers, which can use this package to name addresses
 - [gasweek](https://github.com/alinaschanz/gasweek), [stablepeg](https://github.com/alinaschanz/stablepeg)
 - the notes behind the numbers: [alinaschanz.life](https://alinaschanz.life), the short version on [x](https://x.com/alinaschanz)
+
+## verify a release
+
+from the next release on, every release carries the sdist and the wheel, a `SHA256SUMS` file, an
+opentimestamps proof of that file, and a build provenance attestation made in github's own signing
+flow. with the files downloaded into one folder:
+
+    sha256sum -c SHA256SUMS
+    gh attestation verify ./*.whl --owner alinaschanz
+    ots verify SHA256SUMS.ots
+
+the attestation names the commit and the workflow run that produced the file; the timestamp proves
+the checksums existed before a certain bitcoin block; the commit itself is
+[signed](https://alinaschanz.life/verify/#commits).
 
 ## license
 
