@@ -22,6 +22,8 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/alinaschanz/ens-lookup"
 Author = "https://alinaschanz.life"
+Issues = "https://github.com/alinaschanz/ens-lookup/issues"
+Changelog = "https://github.com/alinaschanz/ens-lookup/blob/main/CHANGELOG.md"
 
 [project.scripts]
 enslookup = "enslookup.cli:main"
@@ -33,5 +35,8 @@ packages = ["enslookup"]
 testpaths = ["tests"]
 
 [tool.ruff]
-line-length = 110
+line-length = 140
 target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]

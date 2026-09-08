@@ -8,7 +8,7 @@ from enslookup.keccak import keccak256, sha3_256
 
 
 def test_sponge_matches_hashlib_sha3_for_many_lengths():
-    for n in list(range(0, 300)) + [1000, 4096]:  # crosses the 136 byte block boundary a few times
+    for n in [*range(300), 1000, 4096]:  # crosses the 136 byte block boundary a few times
         data = os.urandom(n)
         assert sha3_256(data) == hashlib.sha3_256(data).digest(), n
 

@@ -13,9 +13,12 @@ from .rpc import Rpc, RpcError, RpcUnavailable
 
 
 def read_batch(path: str) -> list[str]:
-    stream = sys.stdin if path == "-" else open(path, encoding="utf-8")
-    with stream:
-        return [line.strip() for line in stream if line.strip() and not line.startswith("#")]
+    if path == "-":
+        lines = sys.stdin.read().splitlines()
+    else:
+        with open(path, encoding="utf-8") as f:
+            lines = f.read().splitlines()
+    return [line.strip() for line in lines if line.strip() and not line.startswith("#")]
 
 
 def render(result: Lookup) -> str:
@@ -33,7 +36,7 @@ def render(result: Lookup) -> str:
     for key, value in result.text.items():
         lines.append(f"  {key:<9} {value}")
     if not result.resolved:
-        lines.append("  (no reverse record)" if result.kind == "address" else "  (nothing found: no resolver or no address record)")
+        lines.append("  (no reverse record)" if result.kind == "address" else "  (nothing found: no resolver or address record)")
     return "\n".join(lines)
 
 
