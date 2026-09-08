@@ -5,6 +5,8 @@ versions follow [semver](https://semver.org/) as far as a command line tool has 
 
 ## [unreleased]
 
+- a pypi workflow: trusted publishing on a release, switched on by a repository variable
+
 - avatar records resolved to an https url: ipfs and ipns gateways, erc721/erc1155 pointers through `tokenURI` / `uri`
 
 ## [0.1.0] - 2026-09-08
