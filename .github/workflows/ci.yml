@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.10", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install --quiet pytest .
+      - run: python -m pytest -q
+      - run: enslookup --version
+
+  live:
+    # public rpcs come and go; this job is informative, not required
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --quiet pytest .
+      - run: python -m pytest -q tests/test_live.py
+        env:
+          ENSLOOKUP_LIVE: "1"
+      - run: enslookup vitalik.eth 0xd8dA6BF26964aF9D7eEd9e03E9151fE1fB1b9fF3 --all-text
