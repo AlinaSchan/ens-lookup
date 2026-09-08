@@ -54,6 +54,9 @@ enslookup vitalik.eth --rpc https://your.node   # your own endpoint first
 
 `--all-text` asks for avatar, description, url, email, com.twitter, com.github,
 com.discord, org.telegram, location, keywords and notice. `--no-text` is faster.
+an `avatar` record is also printed as an `avatar url` you can open: `ipfs://` becomes a
+gateway link and `eip155:1/erc721:<contract>/<id>` is followed through `tokenURI` to the
+token's image ([ensip-12](https://docs.ens.domains/ensip/12)).
 batches run four lookups at a time (`--workers`).
 
 exit code is 0 when at least one query resolved, 1 when none did, 2 when no rpc answered.

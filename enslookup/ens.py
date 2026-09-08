@@ -52,6 +52,7 @@ class Lookup:
     resolver: str | None = None
     verified: bool | None = None  # reverse lookups only: does the name point back?
     text: dict[str, str] = field(default_factory=dict)
+    avatar_url: str | None = None  # the avatar record as an https url, when it could be resolved
     error: str | None = None
 
     @property
@@ -62,7 +63,8 @@ class Lookup:
     def as_dict(self) -> dict:
         return {
             "query": self.query, "kind": self.kind, "name": self.name, "address": self.address,
-            "resolver": self.resolver, "verified": self.verified, "text": dict(self.text), "error": self.error,
+            "resolver": self.resolver, "verified": self.verified, "text": dict(self.text), "avatar_url": self.avatar_url,
+            "error": self.error,
         }
 
 
@@ -139,4 +141,8 @@ class Ens:
                 value = self.text(result.name, key, resolver=result.resolver)
                 if value:
                     result.text[key] = value
+            if result.text.get("avatar"):
+                from .avatar import resolve as resolve_avatar
+
+                result.avatar_url = resolve_avatar(self.rpc, result.text["avatar"])
         return result

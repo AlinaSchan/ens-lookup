@@ -132,6 +132,13 @@ def test_reverse_lookup_flags_names_that_do_not_point_back():
     assert result.verified is False
 
 
+def test_lookup_resolves_the_avatar_record(monkeypatch):
+    rpc = make_fake(texts={"avatar": "ipfs://QmPic/a.png"})
+    result = Ens(rpc).lookup("nick.eth", keys=("avatar",))
+    assert result.text["avatar"] == "ipfs://QmPic/a.png" and result.avatar_url == "https://ipfs.io/ipfs/QmPic/a.png"
+    assert result.as_dict()["avatar_url"] == "https://ipfs.io/ipfs/QmPic/a.png"
+
+
 def test_no_resolver_means_nothing_found():
     rpc = FakeRpc({(ens.REGISTRY.lower(), ens.SEL_RESOLVER): lambda data: _word_address(ens.ZERO_ADDRESS)})
     result = Ens(rpc).lookup("definitely-not-registered-123456.eth")

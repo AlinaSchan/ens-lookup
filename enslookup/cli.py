@@ -35,6 +35,8 @@ def render(result: Lookup) -> str:
         lines.append(f"  resolver  {result.resolver}")
     for key, value in result.text.items():
         lines.append(f"  {key:<9} {value}")
+        if key == "avatar" and result.avatar_url and result.avatar_url != value:
+            lines.append(f"  {'avatar url':<9} {result.avatar_url}")
     if not result.resolved:
         lines.append("  (no reverse record)" if result.kind == "address" else "  (nothing found: no resolver or address record)")
     return "\n".join(lines)
@@ -83,10 +85,11 @@ def main(argv: list[str] | None = None) -> int:
             print(json.dumps(r.as_dict(), ensure_ascii=False))
     elif args.csv:
         writer = csv.writer(sys.stdout, lineterminator="\n")
-        writer.writerow(["query", "name", "address", "verified", *keys])
+        extra = ["avatar_url"] if "avatar" in keys else []
+        writer.writerow(["query", "name", "address", "verified", *keys, *extra])
         for r in results:
             writer.writerow([r.query, r.name or "", r.address or "", "" if r.verified is None else str(r.verified).lower(),
-                             *[r.text.get(k, "") for k in keys]])
+                             *[r.text.get(k, "") for k in keys], *([r.avatar_url or ""] if extra else [])])
     else:
         print("\n\n".join(render(r) for r in results))
     return 0 if any(r.resolved for r in results) else 1
