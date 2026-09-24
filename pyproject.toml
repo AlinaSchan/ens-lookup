@@ -21,10 +21,10 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alinaschanz/ens-lookup"
+Homepage = "https://github.com/AlinaSchan/ens-lookup"
 Author = "https://alinaschanz.life"
-Issues = "https://github.com/alinaschanz/ens-lookup/issues"
-Changelog = "https://github.com/alinaschanz/ens-lookup/blob/main/CHANGELOG.md"
+Issues = "https://github.com/AlinaSchan/ens-lookup/issues"
+Changelog = "https://github.com/AlinaSchan/ens-lookup/blob/main/CHANGELOG.md"
 
 [project.scripts]
 enslookup = "enslookup.cli:main"

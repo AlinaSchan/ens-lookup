@@ -1,10 +1,10 @@
 # ens-lookup
 
-[![ci](https://github.com/alinaschanz/ens-lookup/actions/workflows/ci.yml/badge.svg)](https://github.com/alinaschanz/ens-lookup/actions/workflows/ci.yml)
+[![ci](https://github.com/AlinaSchan/ens-lookup/actions/workflows/ci.yml/badge.svg)](https://github.com/AlinaSchan/ens-lookup/actions/workflows/ci.yml)
 ![python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)
 ![license mit](https://img.shields.io/badge/license-MIT-2b7a74)
-[![release](https://img.shields.io/github/v/release/alinaschanz/ens-lookup?color=2b7a74)](https://github.com/alinaschanz/ens-lookup/releases)
-[![openssf scorecard](https://api.scorecard.dev/projects/github.com/alinaschanz/ens-lookup/badge)](https://scorecard.dev/viewer/?uri=github.com/alinaschanz/ens-lookup)
+[![release](https://img.shields.io/github/v/release/AlinaSchan/ens-lookup?color=2b7a74)](https://github.com/AlinaSchan/ens-lookup/releases)
+[![openssf scorecard](https://api.scorecard.dev/projects/github.com/AlinaSchan/ens-lookup/badge)](https://scorecard.dev/viewer/?uri=github.com/AlinaSchan/ens-lookup)
 
 ens names to addresses and back, plus the text records (twitter, github, url, ...).
 pure python, nothing to install, a public rpc, no keys. keccak-256 is implemented in
@@ -36,7 +36,7 @@ $ enslookup 0xb8c2C29ee19D8307cb7255e1Cd9CbDE883A267d5
 ## install
 
 ```
-pipx install git+https://github.com/alinaschanz/ens-lookup
+pipx install git+https://github.com/AlinaSchan/ens-lookup
 ```
 
 or clone it and run `python -m enslookup ...` from the folder. python 3.10 or newer,
@@ -96,9 +96,9 @@ vectors, so a wrong bit anywhere in `keccak.py` fails loudly.
 
 ## see also
 
-- [onchain-notes](https://github.com/alinaschanz/onchain-notes): the daily card and gas scripts
-- [bigmoves](https://github.com/alinaschanz/bigmoves): large transfers, which can use this package to name addresses
-- [gasweek](https://github.com/alinaschanz/gasweek), [stablepeg](https://github.com/alinaschanz/stablepeg)
+- [onchain-notes](https://github.com/AlinaSchan/onchain-notes): the daily card and gas scripts
+- [bigmoves](https://github.com/AlinaSchan/bigmoves): large transfers, which can use this package to name addresses
+- [gasweek](https://github.com/AlinaSchan/gasweek), [stablepeg](https://github.com/AlinaSchan/stablepeg)
 - the notes behind the numbers: [alinaschanz.life](https://alinaschanz.life), the short version on [x](https://x.com/alinaschanz)
 
 ## verify a release
@@ -108,7 +108,7 @@ opentimestamps proof of that file, and a build provenance attestation made in gi
 flow. with the files downloaded into one folder:
 
     sha256sum -c SHA256SUMS
-    gh attestation verify ./*.whl --owner alinaschanz
+    gh attestation verify ./*.whl --owner AlinaSchan
     ots verify SHA256SUMS.ots
 
 the attestation names the commit and the workflow run that produced the file; the timestamp proves

@@ -12,7 +12,7 @@ DEFAULT_RPCS = (
     "https://gateway.tenderly.co/public/mainnet",
     "https://eth-mainnet.public.blastapi.io",
 )
-USER_AGENT = "enslookup/0.1 (+https://github.com/alinaschanz/ens-lookup)"
+USER_AGENT = "enslookup/0.1 (+https://github.com/AlinaSchan/ens-lookup)"
 
 
 class RpcError(Exception):

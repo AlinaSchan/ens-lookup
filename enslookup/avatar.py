@@ -13,7 +13,7 @@ from . import abi
 from .rpc import Rpc, RpcError
 
 GATEWAY = "https://ipfs.io"
-USER_AGENT = "enslookup/0.1 (+https://github.com/alinaschanz/ens-lookup)"
+USER_AGENT = "enslookup/0.1 (+https://github.com/AlinaSchan/ens-lookup)"
 SEL_TOKEN_URI = abi.selector("tokenURI(uint256)")
 SEL_URI = abi.selector("uri(uint256)")
 _NFT = re.compile(r"^eip155:(?P<chain>\d+)/(?P<kind>erc721|erc1155):(?P<contract>0x[0-9a-fA-F]{40})/(?P<id>\d+)$")
